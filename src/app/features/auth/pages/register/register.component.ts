@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RouterLink} from "@angular/router";
+import {RouterLink,Router} from "@angular/router";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,8 @@ import {RouterLink} from "@angular/router";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    NgOptimizedImage
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -20,4 +22,11 @@ export class RegisterComponent {
   passwordUsername = ''
   dniUsername = ''
   phoneUsername = ''
+  constructor(private router:Router) {
+  }
+  public signIn(){
+    this.router.navigateByUrl("/authentication/login")
+      .then(r => console.log(r))
+  }
+
 }
