@@ -53,7 +53,7 @@ export class LoginComponent  {
         console.log(result)
           this.authLoginToken = result.jwt;
       })
-      await this.successLoginGreat(dtoLogin.email, this.authLoginToken);
+     await this.successLoginGreat(dtoLogin.email, this.authLoginToken);
 
 
       await this.router.navigateByUrl(

@@ -22,11 +22,7 @@ export class CustomerService {
 
   }
   public getCustomerByEmail(email : string,authToken : string): Observable<UserDto> {
-    const headers:HttpHeaders = new HttpHeaders({
-      'Authorization': `Bearer ${authToken}`
-    });
-    console.log(`EL TOKEN QUE COGIO fue ${authToken}`)
-    return this.httpClient.get<UserDto>(`${this.baseUrl}/customer/${email}`, {headers});
+    return this.httpClient.get<UserDto>(`${this.baseUrl}/customer/${email}`);
   }
 
 

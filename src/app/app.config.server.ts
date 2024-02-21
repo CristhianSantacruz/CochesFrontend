@@ -1,13 +1,22 @@
 import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
 import { provideServerRendering } from '@angular/platform-server';
 import { appConfig } from './app.config';
-import {HttpClient, provideHttpClient, withFetch} from "@angular/common/http";
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+  provideHttpClient,
+  withFetch,
+  withInterceptors
+} from "@angular/common/http";
+import {authInterceptor} from "./core/interceptors/authinterceptor.interceptor";
 
 const serverConfig: ApplicationConfig = {
   providers: [
     provideServerRendering(),
     provideHttpClient(withFetch()),
-    HttpClient
+    HttpClient,
+    HttpClientModule,
   ]
 };
 
