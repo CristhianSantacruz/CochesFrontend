@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './inventory.component.html',
-  styleUrl: './inventory.component.css'
 })
 export class InventoryComponent {
 

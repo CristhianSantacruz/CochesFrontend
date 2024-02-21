@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { getCookie, setCookie } from 'typescript-cookie'
+import {CookieService} from "ngx-cookie-service";
+
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
-  constructor() {
+  constructor(private cookService : CookieService) {
 
   }
 
   public getToken(): string {
-    return  getCookie("token")
+    return  this.cookService.get("token")
   }
 
   public saveToken(token: string) :void{
-    setCookie("token",token,{expires :1 , path: "/authentication/"});
+    this.cookService.set("token",token);
   }
   public deleteToken() : void {
     localStorage.removeItem("token");

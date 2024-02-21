@@ -11,4 +11,4 @@ import { FeatureRoutingModule } from './feature-routing.module';
     FeatureRoutingModule
   ]
 })
-export class FeatureModule { }
+export default class FeatureModule { }

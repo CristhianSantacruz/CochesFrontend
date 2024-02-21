@@ -5,6 +5,8 @@ import {environment} from "../../../environments/environment.development";
 import {AuthUserDto} from "../dto/AuthUserDto";
 import {AuthLoginResponseDto} from "../dto/AuthLoginResponseDto";
 import {TokenService} from "./token.service";
+import {RegisterDto} from "../dto/RegisterDto";
+import {RegisterResponseDto} from "../dto/RegisterResponseDto";
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +26,9 @@ export class AuthService {
    );
   }
 
-  public signUp(jwt : String ){
-    const observable = this.httpClient.post(`${this.baseUrl}/auth/`, jwt);
+  public register(registerDto : RegisterDto) : Observable<RegisterResponseDto> {
+    return this.httpClient.post<RegisterResponseDto>(
+      `${this.baseUrl}/auth/register`,registerDto);
 
   }
 

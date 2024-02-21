@@ -15,4 +15,4 @@ import {RegisterComponent} from "./pages/register/register.component";
     RegisterComponent
   ]
 })
-export class AuthModule { }
+export default class AuthModule { }
