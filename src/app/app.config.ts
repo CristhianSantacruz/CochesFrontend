@@ -1,8 +1,8 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
+import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import {
-  HTTP_INTERCEPTORS,
   HttpClient,
   HttpClientModule,
   provideHttpClient,
@@ -13,6 +13,8 @@ import {authInterceptor} from "./core/interceptors/authinterceptor.interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
+    FormsModule,
+    ReactiveFormsModule,
     provideClientHydration(),
     HttpClient,
     HttpClientModule,

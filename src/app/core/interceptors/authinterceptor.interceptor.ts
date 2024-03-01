@@ -16,8 +16,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       'Access-Control-Allow-Origin' : '*'
     }
   });
-  console.log(authRequest)
-  console.log(`INTERCEPTOR ${authRequest}`)
   return next(authRequest).pipe(
     catchError((err)=>{
       if(err.status===403){

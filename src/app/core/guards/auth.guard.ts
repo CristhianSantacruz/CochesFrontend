@@ -1,11 +1,12 @@
-import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivateFn, Route, Router, RouterStateSnapshot} from '@angular/router';
 import {TokenService} from "../service/token.service";
 import {inject} from "@angular/core";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import {Roles} from "../utils/Roles";
+
 
 export const AuthGuardWithAuth: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
-  let tokenService: TokenService = inject(TokenService);
-  let router: Router = inject(Router);
+  let tokenService:TokenService = inject(TokenService)
+  let router : Router = inject(Router)
   if(tokenService.getToken()){
     router.navigateByUrl("/home/products")
     return false;
@@ -14,11 +15,11 @@ export const AuthGuardWithAuth: CanActivateFn = (route: ActivatedRouteSnapshot, 
   }
 };
 
+
+
 export const AuthGuardWithoutAuth: CanActivateFn = (route, state) => {
-  let tokenService = inject(TokenService)
-  let router = inject(Router)
-
-
+  let tokenService:TokenService = inject(TokenService)
+  let router : Router = inject(Router)
   if (!tokenService.getToken()) {
     console.log('No puede estar aqui')
     router.navigateByUrl('/authentication/login');
@@ -29,3 +30,13 @@ export const AuthGuardWithoutAuth: CanActivateFn = (route, state) => {
   }
 };
 
+export const canActiveWithRolAdmin: CanActivateFn = () => {
+  let tokenService:TokenService = inject(TokenService)
+ if(tokenService.getToken()){
+   if(tokenService.getInfoToken().rol !== "ADMIN"){
+     console.log("No tienes permisos de estar aqui no es un admin!")
+     return false;
+   }
+ }
+  return true;
+};

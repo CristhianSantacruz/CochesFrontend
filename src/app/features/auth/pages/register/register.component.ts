@@ -29,8 +29,8 @@ export class RegisterComponent {
       nameUsername : ['',[Validators.required]],
       lastNameUsername:['',[]],
       emailUsername : ['',[ Validators.required,Validators.email]],
-      dniUsername : ['',[Validators.required, Validators.maxLength(10)]],
-      phoneUsername :['',[Validators.maxLength(10)]]
+      dniUsername : ['',[Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
+      phoneUsername :['',[Validators.required, Validators.maxLength(10),Validators.minLength(10)]]
     })
 
   }

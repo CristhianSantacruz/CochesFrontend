@@ -1,9 +1,9 @@
 export interface UserDto {
    cardId : string;
-  active : Number;
-  email : string;
-  fullName : string;
-  phone : string;
-  password : string;
-  rol:string;
+   email : string;
+   exp : number;
+   fullname : string;
+   iat : number;
+   numberCellPhone : string;
+   rol : string;
 }

@@ -14,6 +14,7 @@ import {AuthService} from "../../../../core/service/auth.service";
 import {lastValueFrom} from "rxjs";
 import Swal from 'sweetalert2';
 import {CustomerService} from "../../../../core/service/customer.service";
+import {TokenService} from "../../../../core/service/token.service";
 
 @Component({
   selector: 'app-login',
@@ -32,13 +33,11 @@ export class LoginComponent  {
   private authLoginToken : string;
   private userName : string;
   authService:AuthService = inject(AuthService);
-  customerService : CustomerService  = inject(CustomerService);
-  constructor(private router:Router , private fb : FormBuilder) {
+
+  constructor(private router:Router , private fb : FormBuilder,private tokenService : TokenService) {
     this.profileForm = this.fb.group({
-      emailUser: ['',
-        [Validators.required,Validators.email]],
-      passwordUser: ['',
-        [Validators.required,Validators.maxLength(10),Validators.minLength(10)]],
+      emailUser: ['', [Validators.required,Validators.email]],
+      passwordUser: ['', [Validators.required,Validators.maxLength(10),Validators.minLength(10)]],
     });
 
   }
@@ -53,12 +52,9 @@ export class LoginComponent  {
         console.log(result)
           this.authLoginToken = result.jwt;
       })
-     await this.successLoginGreat(dtoLogin.email, this.authLoginToken);
+     await this.successLoginGreat();
 
-
-      await this.router.navigateByUrl(
-        "/home/products"
-      )
+      await this.router.navigateByUrl("/home/products")
     }else{
       await Swal.fire({
         icon: "error",
@@ -67,15 +63,9 @@ export class LoginComponent  {
       });
     }
   }
-  public async successLoginGreat(email:string,token: string):Promise<void>{
-
-     await lastValueFrom(this.customerService.getCustomerByEmail(email,token)).then(
-       result => {
-         this.userName = result.fullName;
-         console.log(this.userName)
-         console.log(result)
-       }
-     )
+  public async successLoginGreat():Promise<void>{
+    this.userName = this.tokenService.getInfoToken().fullname
+    console.log("Info del token ",this.tokenService.getInfoToken())
      await Swal.fire({
        position: "top-end",
        icon: "success",

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AuthGuardWithAuth, AuthGuardWithoutAuth} from "../core/guards/auth.guard";
+import {AuthGuardWithAuth, AuthGuardWithoutAuth, canActiveWithRolAdmin} from "../core/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -13,6 +13,11 @@ const routes: Routes = [
    path : "home",
     canActivate : [AuthGuardWithoutAuth],
    loadChildren : () => import("./home/home.module")
+  },
+   {
+    path : "admin",
+    canActivate : [canActiveWithRolAdmin],
+    loadChildren : () => import("./admin/admin.module").then(a => a.AdminModule)
   }
 ];
 

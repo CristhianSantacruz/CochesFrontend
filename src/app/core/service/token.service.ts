@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
-import {CookieService} from "ngx-cookie-service";
+import {jwtDecode, JwtPayload} from "jwt-decode";
+import {UserDto} from "../dto/UserDto";
+import {getCookie,setCookie} from "typescript-cookie";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
-  constructor(private cookService : CookieService) {
-
-  }
+  constructor() {}
 
   public getToken(): string {
-    return  this.cookService.get("token")
+    return  getCookie("token");
   }
 
   public saveToken(token: string) :void{
-    this.cookService.set("token",token);
+    setCookie("token",token);
+  }
+  public getInfoToken(): UserDto{
+    const decode =  jwtDecode(this.getToken());
+    return <UserDto>decode;
   }
   public deleteToken() : void {
     localStorage.removeItem("token");
   }
+
 }

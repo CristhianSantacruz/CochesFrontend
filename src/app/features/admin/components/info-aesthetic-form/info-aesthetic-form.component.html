@@ -1,0 +1,51 @@
+<div class="bg-gradient-to-br from-sky-200 p-6 rounded-lg shadow-lg">
+  <form  [formGroup]="infoAestheticForm"  class="w-full max-w-sm">
+    <!-- color -->
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/3">
+        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+          Color
+        </label>
+      </div>
+      <div class="md:w-2/3">
+        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="color" type="text" placeholder="Negro" formControlName="color">
+      </div>
+    </div>
+
+    <!-- numberDoor -->
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/3">
+        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+          Numero de Puertas
+        </label>
+      </div>
+      <div class="md:w-2/3">
+        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="numberDoor" type="number" placeholder="4" formControlName="numberDoor">
+      </div>
+    </div>
+    <!-- numberSeats -->
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/3">
+        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+          Numero de Asientos
+        </label>
+      </div>
+      <div class="md:w-2/3">
+        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="numberSeats" type="number" placeholder="5" formControlName="numberSeats">
+      </div>
+    </div>
+
+    <!-- Path Image -->
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/3">
+        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+          Link Imagen del Auto
+        </label>
+      </div>
+      <div class="md:w-2/3">
+        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="pathImage" type="text"  placeholder="" formControlName="pathImage">
+      </div>
+    </div>
+
+  </form>
+</div>
