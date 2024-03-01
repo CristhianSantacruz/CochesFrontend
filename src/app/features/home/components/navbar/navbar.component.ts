@@ -2,8 +2,9 @@
 import { Component } from '@angular/core';
 import {TokenService} from "../../../../core/service/token.service";
 import {removeCookie} from "typescript-cookie";
-import {RouterLink, RouterLinkActive} from "@angular/router";
+import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {UserDto} from "../../../../core/dto/UserDto";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +23,7 @@ export class NavbarComponent {
  public userName : string;
  public isAdmin: boolean = false;
 
-  constructor(private tokenService:TokenService) {;
+  constructor(private tokenService:TokenService,private router:Router) {;
     this.decodeToken = this.tokenService.getInfoToken()
     console.log(this.decodeToken);
     this.userName = this.decodeToken.fullname
@@ -36,6 +37,15 @@ export class NavbarComponent {
 
   public signOut(){
     removeCookie("token");
+    this.router.navigateByUrl("/authentication/login").then(
+      value => {
+        Swal.fire({
+            icon : "success",
+            title : "Hasta Luego",
+            text : `Nos vemos pronto ${this.userName}`
+        })
+      }
+    );
   }
 
 

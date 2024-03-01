@@ -1,35 +1,36 @@
 <header>
   <app-navbar></app-navbar>
 </header>
-<div class="flex justify-center space-x-4 mt-4 ">
-  <button (click)="showBasicForm()" class="bg-sky-500 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded-xl"> Registrar Informacion Basica </button>
-  <button (click)="showMechanicalForm()" class="bg-sky-500 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded-xl"> Registrar Informacion Mecanica </button>
-  <button (click)="showAestheticForm()" class="bg-sky-500 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded-xl"> Registrar Informacion Estetica </button>
-</div>
-<div class="flex justify-center mt-4">
-  <form [formGroup]="registerCarForm" style="text-align: center;" class="mt-4">
-    @if(showBasic){
-      <p class="m-2 text-xl">Registra la informacion Basica del Auto</p>
-      <div class="justify-center flex ">
-        <app-info-basic-form ></app-info-basic-form>
+<main class="min-h-screen bg-sky-300 pt-4">
+  <div class="flex justify-center space-x-4 mt-4 ">
+    <button (click)="showBasicForm()" class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-xl"> Registrar Informacion Basica </button>
+    <button (click)="showMechanicalForm()" class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-xl"> Registrar Informacion Mecanica </button>
+    <button (click)="showAestheticForm()" class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-xl"> Registrar Informacion Estetica </button>
+  </div>
+  <div class="flex justify-center mt-4">
+    <form [formGroup]="registerCarForm" style="text-align: center;" class="mt-4">
+      @if(showBasic){
+        <p class="m-2 text-xl">Registra la informacion Basica del Auto</p>
+        <div class="justify-center flex ">
+          <app-info-basic-form ></app-info-basic-form>
+        </div>
+      } @else if (showMechanical){
+        <p class="m-2 text-xl">Registra la informacion Mecanica del Auto</p>
+        <div  class="justify-center flex ">
+          <app-info-machine-form></app-info-machine-form>
+        </div>
+      } @else if (showAesthetic) {
+        <p class="m-2 text-xl">Registra la informacion Estetica del Auto</p>
+        <div class="justify-center flex ">
+          <app-info-aesthetic-form></app-info-aesthetic-form>
+        </div>
+      }
+      <div class="flex justify-center p-5 m-5">
+        <button (click)="registerCar()" class=" bg-red-400  text-slate-100 shadow-xl rounded-2xl font-bold  p-5 hover:scale-110 duration-300">Registrar Carro</button>
       </div>
-    } @else if (showMechanical){
-      <p class="m-2 text-xl">Registra la informacion Mecanica del Auto</p>
-      <div  class="justify-center flex ">
-       <app-info-machine-form></app-info-machine-form>
-      </div>
-    } @else if (showAesthetic) {
-      <p class="m-2 text-xl">Registra la informacion Estetica del Auto</p>
-      <div class="justify-center flex ">
-        <app-info-aesthetic-form></app-info-aesthetic-form>
-      </div>
-    }
-    <div class="flex justify-center p-5 m-5">
-      <button (click)="registerCar()" class=" bg-red-400  text-slate-100 shadow-xl rounded-2xl font-bold  p-5 hover:scale-110 duration-300">Registrar Carro</button>
-    </div>
 
-  </form>
+    </form>
 
-</div>
-
+  </div>
+</main>
 

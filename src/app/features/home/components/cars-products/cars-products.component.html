@@ -1,0 +1,41 @@
+@for (carProduct of listCars ; track  carProduct.serial){
+  <article class="bg-white shadow overflow-hidden rounded-xl">
+    <div class="h-52">
+      <img
+        class="rounded h-full w-full object-contain pt-5"
+        src="{{carProduct.pathImage}}"
+        loading="lazy"
+        alt="carro"
+        class="w-56 rounded-xl"
+      />
+    </div>
+    <div class="space-y-3 p-5">
+      <h3 class="font-bold text-sm text-sky-500">Spring Boot</h3>
+
+      <h2 class="text-xl font-semibold text-slate-800 leading-tight">
+        El mundo de la seguridad en spring boot es tan tediosa
+      </h2>
+
+      <p class="text-slate-500">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
+        voluptatum obcaecati aliquid voluptate nobis rerum, quasi laboriosam
+        excepturi commodi veritatis hic vero iusto molestiae maxime quis
+        cum. Porro, sed! Dignissimos?
+      </p>
+    </div>
+    <div class="flex p-5 space-x-2">
+      <img
+        src="https://ui-avatars.com/api?name=Cristhian Santacruz"
+        alt="Cristhian Santacruz"
+        class="w-6 h-6 rounded-full"
+      />
+      <div class="flex flex-col justify-center">
+            <span class="text-sm font-semibold text-slate-600"
+            >Cristhian Santacruz</span
+            >
+        <span class="text-sm text-slate-500">feb, 2024</span>
+      </div>
+    </div>
+  </article>
+
+}
