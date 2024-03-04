@@ -2,7 +2,7 @@
 <header>
   <app-navbar></app-navbar>
 </header>
-<main class="p-4 bg-sky-300 min-h-screen">
+<main class="p-4 bg-gray-100 min-h-screen">
   <div class="mx-auto  grid max-w-1/2 gap-4 md:grid-cols-3 lg:grid-cols-4">
     @for (carProduct of listCars ; track  carProduct.serial){
       <article class="bg-sky-100 shadow overflow-hidden rounded-xl">
@@ -15,8 +15,8 @@
         </div>
         <div class="space-y-3 p-5">
           <h3 class="font-bold text-xl text-sky-500 ">
-            {{carProduct.brandCarEntity}} | {{carProduct.category}}</h3>
-          <h4 class="font-bold italic text-sm text-black">{{carProduct.reference}}</h4>
+            {{carProduct.reference}} | {{carProduct.category}}</h3>
+          <h4 class="font-bold italic text-sm text-black">{{carProduct.brandCarEntity}}</h4>
           <h2 class="text-xl font-semibold text-slate-800 leading-tight">
            Caracteristicas
           </h2>
@@ -24,7 +24,6 @@
             <h3 class="font-semibold text-xl italic text-blue-500">Básica</h3>
             <p class="text-black">Año:</p>
             <p>Modelo: {{carProduct.brandCarEntity}}</p>
-            <p>Stock: {{carProduct.stock}}</p>
           </div>
 
           <div class="text-black">
@@ -42,12 +41,21 @@
             <p>Número de Asientos: {{carProduct.numberSeats}}</p>
           </div>
 
-          <p class="text-black text-xl">💲{{carProduct.price}}</p>
+          <div class="flex justify-between">
+            <p class="text-black text-xl">💲{{carProduct.price}}</p>
+            <p class="text-black text-xl"> Stock 🛍️ {{carProduct.stock}}</p>
+          </div>
         </div>
-        <div class="flex p-5 space-x-2">
-          <button class="bg-blue-900  text-slate-100 shadow-xl rounded-2xl font-bold  py-2 px-2 hover:scale-110 duration-300" >Anadir al Carrito</button>
-          <button  class="bg-red-400  text-slate-100 shadow-xl rounded-2xl font-bold  px-2 hover:scale-110 duration-300">Sacar del Carrito</button>
+        <div class="flex p-5 space-x-2 ">
+          @if(carProduct.stock>0){
+            <button class="bg-blue-900  text-slate-100 shadow-xl rounded-2xl font-bold  py-2 px-2 hover:scale-110 duration-300"  (click)="addCarShoppingCart(carProduct)">Agregar al Carrito</button>
+            <button  class="bg-red-400  text-slate-100 shadow-xl rounded-2xl font-bold  px-2 hover:scale-110 duration-300" (click)="removeCarShoppingCart(carProduct)" >Eliminar  del Carrito</button>
+
+          }
         </div>
+        @if(isAdmin){
+          <button  class="bg-black  text-slate-100 shadow-xl rounded-2xl font-bold m-1 p-2 hover:scale-110 duration-300  " (click)="deletedCarByAdmin(carProduct.serial)"  >Eliminar  del Carrito</button>
+        }
       </article>
     }
   </div></main>

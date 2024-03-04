@@ -1,104 +1,117 @@
-<header class="bg-sky-900 shadow px-6">
-  <div class="flex justify-between items-center h-16 max-w-3xl mx-auto">
-    <button
-      class="hover:bg-black hover:text-white rounded p-1 -ml-1 focus:ring-2"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 text-cyan-50"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-        />
-      </svg>
-    </button>
-    <div class="flex -mr-4 items-center">
-      <a href="" class="text-sky-500 duration-200 hover:rotate-6"
-      ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-      </svg>
+<header class="bg-sky-900 shadow">
+  <!-- component -->
+  <!-- follow me on twitter @asad_codes -->
 
-      </a>
-      <div class="space-x-8 ml-8 hidden md:flex">
-        <a routerLinkActive="active" routerLink="/home/products" class="px3 text-sky-100" href="">Home</a>
-        <a class="text-slate-100 px-3 py- hover:text-sky-500" href=""
-        >About</a>
-        @if(isAdmin){
-          <a  routerLink="/admin" routerLinkActive="active" class="text-slate-100 px-3 py- hover:text-black" href="">Save Car</a>
-        }@else{
-          <a class="text-slate-100 px-3 py- hover:text-black" href="">Compras</a>
-        }
-        <a class="text-slate-100 px-3 py- hover:text-black" href="">Contact</a>
-      </div>
-    </div>
-    <div class="flex">
-      <button class="text-yellow-400 rounded-full p-1 focus:ring-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
+  <div class="flex flex-wrap place-items-center">
+    <section class="relative mx-auto">
+      <!-- navbar -->
+      <nav class="flex justify-between bg-gray-900 text-white w-screen">
+        <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+          <div class="flex-col">
+            <p class="text-cyan-50 text-xl ">Bienvenido</p>
+            <p class="text-cyan-50 text-xl "><span class="italic text-lg font-semibold">{{this.userName}}</span> </p>
+          </div>
+          <!-- Nav Links -->
+          <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12 ">
+            <li><a class="hover:text-gray-200"  routerLink = "/home/products"
+                   routerLinkActive = "active">Home</a></li>
+            <li><a class="hover:text-gray-200"  routerLink="/home/shopping">Tienda</a></li>
+            @if(isAdmin){
+              <li><a class="hover:text-gray-200"  routerLink = "/admin"
+                     routerLinkActive = "active">Save Car</a></li>
+            }@else{
+              <li><a class="hover:text-gray-200"    routerLink = "/home/historical"
+                     routerLinkActive = "active">Historial Compras</a></li>
+            }
+            <li><a class="hover:text-gray-200" routerLink = "/home/about"
+                   routerLinkActive = "active">Sobre Mi</a></li>
+          </ul>
+          <!-- Header Icons -->
+          <div class="hidden xl:flex items-center space-x-5 items-center">
+
+            <a class="flex items-center hover:text-gray-200" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <span class="flex absolute -mt-5 ml-4">
+              <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
+                </span>
+              </span>
+            </a>
+            <!-- Sign In / Register      -->
+            <a (click)="signOut()" class="flex items-center hover:text-gray-200" >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </a>
+
+          </div>
+        </div>
+        <!-- Responsive navbar -->
+        <a class="xl:hidden flex mr-6 items-center" routerLink="/home/shopping">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span class="flex absolute -mt-5 ml-4">
+          <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
+          </span>
+        </span>
+        </a>
+        <button (click)="toggleMenu()" class="navbar-burger self-center mr-12 xl:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+
+    </section>
+    @if(this.menuClicked){
+      <div class="space-y-1 border-t pb-3 pt-2 xl:hidden">
+        <a
+          routerLink = "/home/products"
+          routerLinkActive = "active"
+          class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white">
+          Home</a
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-          />
-        </svg>
-      </button>
-        <p class="text-cyan-50 rounded-full p-1 focus:ring-2 ml-4">Bievenido   <span class="italic text-xl">{{this.userName}}</span> </p>
-      <button (click)="signOut()" class="text-slate-100 rounded-full ml-7 focus:ring-2" >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
-        </svg>
-
-      </button>
-    </div>
-  </div>
-  <!-- link de navegacion-->
-  <div class="space-y-1 border-t pb-3 pt-2 md:hidden">
-    <a
-      routerLink = "/home/products"
-      routerLinkActive = "active"
-      class="block px-3 py-2 rounded-2xl bg-sky-500 text-white">
-      Home</a
-    >
-    <a
-      href=""
-      class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
-    >
-      About</a
-    >
-    @if(isAdmin){
-      <a
-        routerLink = "/admin"
-        routerLinkActive = "active"
-        class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
-      >
-        SaveCar</a
-      >
-    }@else{
-      <a
-        routerLink = "/home"
-        routerLinkActive = "active"
-        class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
-      >
-        Ver Compras</a
-      >
+        <a
+          routerLink="/home/shopping"
+          class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
+        >
+          Tienda</a
+        >
+        @if(isAdmin){
+          <a
+            routerLink = "/admin"
+            routerLinkActive = "active"
+            class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
+          >
+            SaveCar</a
+          >        }@else{
+          <a
+            routerLink = "/home/historical"
+            routerLinkActive = "active"
+            class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
+          >
+            Historial Compras</a
+          >
+        }
+        <a
+          routerLink = "/home/about"
+          routerLinkActive = "active"
+          class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
+        >
+          Sobre Mi</a
+        >
+        <a
+          (click)="signOut()"
+          class="block px-3 bg-blue-900 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
+        >
+          Logout</a
+        >
+      </div>
     }
-    <a
-      href=""
-      class="block px-3 py-2 rounded-2xl text-white transition-colors hover:bg-sky-500 hover:text-white"
-    >
-      Contact</a
-    >
+
   </div>
 </header>

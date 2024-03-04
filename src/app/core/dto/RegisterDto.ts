@@ -3,4 +3,5 @@ export interface RegisterDto {
   cardId : string
   email : string,
   phone : string,
+  password : string,
 }

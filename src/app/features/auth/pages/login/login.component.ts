@@ -37,7 +37,7 @@ export class LoginComponent  {
   constructor(private router:Router , private fb : FormBuilder,private tokenService : TokenService) {
     this.profileForm = this.fb.group({
       emailUser: ['', [Validators.required,Validators.email]],
-      passwordUser: ['', [Validators.required,Validators.maxLength(10),Validators.minLength(10)]],
+      passwordUser: ['', [Validators.required]],
     });
 
   }
@@ -67,7 +67,7 @@ export class LoginComponent  {
     this.userName = this.tokenService.getInfoToken().fullname
     console.log("Info del token ",this.tokenService.getInfoToken())
      await Swal.fire({
-       position: "top-end",
+       position: "center",
        icon: "success",
        title: `Bienvenid@  ${this.userName}`,
        showConfirmButton: false,

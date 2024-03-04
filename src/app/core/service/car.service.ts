@@ -21,4 +21,8 @@ export class CarService {
     return this.httpClient.post<CardDto>(`${this.baseUrl}/car`,registerCarDto)
   }
 
+  public deteledCarByAdmin(cardId : number){
+    return this.httpClient.delete(`${this.baseUrl}/car/${cardId}`);
+  }
+
 }

@@ -5,6 +5,7 @@ import {removeCookie} from "typescript-cookie";
 import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {UserDto} from "../../../../core/dto/UserDto";
 import Swal from "sweetalert2";
+import {createWebpackLoggingCallback} from "@angular-devkit/build-angular/src/tools/webpack/utils/stats";
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,7 @@ import Swal from "sweetalert2";
 })
 export class NavbarComponent {
 
+ public menuClicked : boolean = false;
 
  decodeToken : UserDto;
  public jwt : string;
@@ -37,6 +39,7 @@ export class NavbarComponent {
 
   public signOut(){
     removeCookie("token");
+    localStorage.clear();
     this.router.navigateByUrl("/authentication/login").then(
       value => {
         Swal.fire({
@@ -46,6 +49,10 @@ export class NavbarComponent {
         })
       }
     );
+  }
+
+  public toggleMenu() {
+    this.menuClicked = !this.menuClicked;
   }
 
 

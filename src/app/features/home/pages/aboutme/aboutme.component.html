@@ -1,0 +1,91 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+<div class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto py-8">
+    <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+      <div class="col-span-4 sm:col-span-3">
+        <div class="bg-white shadow rounded-lg p-6">
+          <div class="flex flex-col items-center">
+            <img src="./assets/rostro.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0 " alt="imagen">
+            <h1 class="text-xl font-bold">Cristhian Santacruz</h1>
+            <p class="text-gray-700">Student Developer</p>
+            <div class="mt-6 flex flex-wrap gap-4 justify-center">
+              <a href="mailto:crimsant@espol.edu.ec?subject=Consulta%20de%20Cristhian%20Santacruz&body=Escribe%20aquí%20tu%20mensaje" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-2xl">Correo</a>
+            </div>
+          </div>
+          <hr class="my-6 border-t border-gray-300">
+          <div class="flex flex-col">
+            <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">Skills</span>
+            <ul>
+              <li class="mb-2">Typescript</li>
+              <li class="mb-2">Angular</li>
+              <li class="mb-2">Java</li>
+              <li class="mb-2">Spring Boot</li>
+
+              @defer(){
+                <li class="mb-2">Rust</li>
+              }@loading (minimum  7s){
+                <p class="text-sm font-semibold text-red-400">Future Skill ..</p>
+              }
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-4 sm:col-span-9">
+        <div class="bg-white shadow rounded-lg p-6">
+          <h2 class="text-xl font-bold mb-4">Quien Soy</h2>
+          <p class="text-gray-700">
+            Soy Cristhian Santacruz, un desarrollador de software especializado en <span class="text-blue-950 font-semibold">Java</span> y <span class="text-blue-950 font-semibold">Spring Boot</span> para el backend, sin embargo, mi versatilidad se extiende también al desarrollo frontend, donde he trabajado con tecnologías como <span class="text-blue-950 font-semibold">Angular</span> para crear interfaces de usuario intuitivas y atractivas.Mis mejor virtudes son  mi responsabilidad, empatía y comunicación efectiva. Siempre estoy ávido de aprender nuevas tecnologías y mejorar mis habilidades.
+          </p>
+
+          <h3 class="font-semibold text-center mt-3 -mb-2">
+            Redes
+          </h3>
+          <div class="flex justify-center items-center gap-6 my-6">
+            <a class="text-gray-700 hover:text-blue-600" aria-label="Visit TrendyMinds LinkedIn"
+               target="_blank" href="https://www.linkedin.com/in/cristhiansantacruz">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-6">
+                <path fill="currentColor"
+                      d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
+                </path>
+              </svg>
+            </a>
+            <a class="text-gray-700  hover:text-blue-600" aria-label="Visit TrendyMinds YouTube"  href="https://github.com/CristhianSantacruz"
+               target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+
+          </div>
+
+
+          <h2 class="text-xl font-bold mt-6 mb-4">Proyectos</h2>
+         @for(project of projectsAboutme ; track project.id){
+           <div class="mb-6">
+             <div class="flex justify-between flex-wrap gap-2 w-full">
+               <span class="text-gray-700 font-bold">{{project.title}}</span>
+               <p>
+                 <span class="text-gray-700">{{project.year}}</span>
+               </p>
+             </div>
+             <p class="mt-2">
+               {{project.description}}
+             </p>
+             <div class="flex gap-4 mt-2">
+                @if(this.project.urlGithubFrontend){
+                  <a class="text-blue-500 italic font-semibold" href="{{project.urlGithubFrontend}}" target="_blank">Visitar Frontend</a>
+                }
+               @if(this.project.urlGithubBackend){
+                 <a class="text-blue-500 italic font-semibold" href="{{project.urlGithubBackend}}" target="_blank">Visitar Backend</a>
+               }
+             </div>
+           </div>
+         }
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

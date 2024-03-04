@@ -1,3 +1,3 @@
 export interface RegisterResponseDto {
-  passwordGenerated: string,
+  userName: string,
 }

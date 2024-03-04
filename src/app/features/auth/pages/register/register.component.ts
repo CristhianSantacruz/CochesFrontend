@@ -21,7 +21,7 @@ export class RegisterComponent {
 
   userDataForm : FormGroup;
   registered : boolean = false;
-  passwordResultRegister : string;
+  userNameResultRegister : string;
 
 
   constructor(private router:Router, private authService : AuthService,private fb: FormBuilder) {
@@ -30,7 +30,8 @@ export class RegisterComponent {
       lastNameUsername:['',[]],
       emailUsername : ['',[ Validators.required,Validators.email]],
       dniUsername : ['',[Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
-      phoneUsername :['',[Validators.required, Validators.maxLength(10),Validators.minLength(10)]]
+      phoneUsername :['',[Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
+      passwordUsername : ['',[Validators.required]]
     })
 
   }
@@ -41,11 +42,13 @@ export class RegisterComponent {
       cardId : this.userDataForm.value.dniUsername,
       phone : this.userDataForm.value.phoneUsername,
       fullName : this.userDataForm.value.nameUsername + " " +this.userDataForm.value.lastNameUsername,
+      password : this.userDataForm.value.passwordUsername
 
     }
+    console.log("USEARIO REGISTRADO DATOS",registerDataDto)
     if(this.userDataForm.valid){
        await lastValueFrom(this.authService.register(registerDataDto)).then(value => {
-         this.passwordResultRegister = value.passwordGenerated;
+         this.userNameResultRegister = value.userName;
        })
       this.registered = true;
     }else{
