@@ -1,8 +1,8 @@
 export interface ProjectDto{
-  id : number,
+  id? : number,
   title : string,
   description: string,
-  urlGithubFrontend : string,
-  urlGithubBackend : string,
+  urlGithubFrontend? : string,
+  urlGithubBackend? : string,
   year : string
 }

@@ -20,8 +20,6 @@ export class TokenService {
   }
   public getInfoToken(): UserDto{
     const decode =  jwtDecode(this.getToken());
-    console.log(this.getToken())
-    console.log(decode)
     return <UserDto>decode;
   }
   public deleteToken() : void {

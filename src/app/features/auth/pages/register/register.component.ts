@@ -45,14 +45,13 @@ export class RegisterComponent {
       password : this.userDataForm.value.passwordUsername
 
     }
-    console.log("USEARIO REGISTRADO DATOS",registerDataDto)
+
     if(this.userDataForm.valid){
        await lastValueFrom(this.authService.register(registerDataDto)).then(value => {
          this.userNameResultRegister = value.userName;
        })
       this.registered = true;
     }else{
-      console.log("Error  de registro")
       await Swal.fire({
         icon: "error",
         title: "Opps",

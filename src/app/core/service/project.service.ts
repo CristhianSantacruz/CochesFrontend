@@ -16,4 +16,8 @@ export class ProjectService {
   public getAllProjects(): Observable<ProjectDto[]>{
     return this.httpClient.get<ProjectDto[]>(`${this.baseUrl}/project`);
   }
+
+  public registerProject(projectDto : ProjectDto) : Observable<ProjectDto>{
+    return this.httpClient.post<ProjectDto>(`${this.baseUrl}/project`,projectDto)
+  }
 }
