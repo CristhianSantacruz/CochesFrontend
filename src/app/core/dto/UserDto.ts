@@ -7,3 +7,14 @@ export interface UserDto {
    numberCellPhone : string;
    rol : string;
 }
+
+export interface UserDtoForgot {
+  carID : string,
+  active : number,
+  email : string,
+  fullName : string,
+  phone : string,
+  password : string,
+  rol : string,
+
+}

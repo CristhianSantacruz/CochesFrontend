@@ -4,7 +4,7 @@ import {HttpClient,HttpHeaders} from "@angular/common/http";
 import {RegisterDto} from "../dto/RegisterDto";
 import {Observable} from "rxjs";
 import {RegisterResponseDto} from "../dto/RegisterResponseDto";
-import {UserDto} from "../dto/UserDto";
+import {UserDto, UserDtoForgot} from "../dto/UserDto";
 import {TokenService} from "./token.service";
 
 @Injectable({
@@ -21,8 +21,16 @@ export class CustomerService {
       `${this.baseUrl}/customer`,userDto);
 
   }
-  public getCustomerByEmail(email : string,authToken : string): Observable<UserDto> {
+  public getCustomerByEmail(email : string): Observable<UserDto> {
     return this.httpClient.get<UserDto>(`${this.baseUrl}/customer/${email}`);
+  }
+
+  public getCustomerByCardId(cardId : string ): Observable<UserDtoForgot> {
+    return this.httpClient.get<UserDtoForgot>(`${this.baseUrl}/customer/id/${cardId}`);
+  }
+
+  public updateDataCustomer(newUserData : UserDtoForgot) : Observable<UserDtoForgot> {
+    return this.httpClient.put<UserDtoForgot>(`${this.baseUrl}/customer/update`,newUserData);
   }
 
 

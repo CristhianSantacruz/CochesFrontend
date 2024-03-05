@@ -49,7 +49,6 @@ export class LoginComponent  {
         password : this.profileForm.value.passwordUser
       }
       await lastValueFrom(this.authService.signIn(dtoLogin)).then(result => {
-        console.log(result)
           this.authLoginToken = result.jwt;
       })
      await this.successLoginGreat();
@@ -65,7 +64,6 @@ export class LoginComponent  {
   }
   public async successLoginGreat():Promise<void>{
     this.userName = this.tokenService.getInfoToken().fullname
-    console.log("Info del token ",this.tokenService.getInfoToken())
      await Swal.fire({
        position: "center",
        icon: "success",
@@ -78,5 +76,9 @@ export class LoginComponent  {
   public signUp(){
     this.router.navigateByUrl("/authentication/register")
       .then(r => console.log(r))
+  }
+
+  public forgotPassword()  {
+    this.router.navigateByUrl("/authentication/forgot").then();
   }
 }

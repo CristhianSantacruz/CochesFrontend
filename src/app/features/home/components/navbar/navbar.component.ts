@@ -27,7 +27,6 @@ export class NavbarComponent {
 
   constructor(private tokenService:TokenService,private router:Router) {;
     this.decodeToken = this.tokenService.getInfoToken()
-    console.log(this.decodeToken);
     this.userName = this.decodeToken.fullname
     this.jwt = this.tokenService.getToken()
     this.tokenService.saveToken(this.jwt);
