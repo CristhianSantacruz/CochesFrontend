@@ -48,9 +48,16 @@ export class LoginComponent  {
         email : this.profileForm.value.emailUser,
         password : this.profileForm.value.passwordUser
       }
-      await lastValueFrom(this.authService.signIn(dtoLogin)).then(result => {
+      await lastValueFrom(this.authService.signIn(dtoLogin))
+        .then(result => {
           this.authLoginToken = result.jwt;
-      })
+      }).catch(err=>{
+          Swal.fire({
+            icon: "error",
+            title: "Opps",
+            text: "Revissa bien tus datos",
+          });
+        });
      await this.successLoginGreat();
 
       await this.router.navigateByUrl("/home/products")

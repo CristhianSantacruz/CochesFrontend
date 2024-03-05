@@ -63,8 +63,8 @@ export class ForgotPasswordComponent {
     let newUserData : UserDtoForgot = this.dataForgotUser;
     newUserData.password = this.passwordForm.value. newPasswordUser
     this.customerService.updateDataCustomer(this.dataForgotUser).subscribe({
-      next : async value => {
-        await Swal.fire({
+      next : value => {
+         Swal.fire({
           icon: "success",
           title: "Se ha cambiado",
           text: "Disfrute de su nueva contraseña",
