@@ -91,7 +91,7 @@ export class InventoryComponent{
      });
 
    }
-    console.log(this.carsPurchases);
+
     localStorage.setItem('carsPurchases',JSON.stringify(this.carsPurchases));
 
   }
@@ -125,7 +125,6 @@ export class InventoryComponent{
         title : "Se ha eliminado del carrito correctamente",
       })
     }
-    console.log("Coche eliminaos", this.carsPurchases)
     localStorage.setItem('carsPurchases',JSON.stringify(this.carsPurchases));
   }
 
